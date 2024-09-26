@@ -2,22 +2,23 @@
 
 public class stringbuilder {
     public static void main(String[] args) {
-        // StringBuilder sb = new StringBuilder("Parker");
-        // System.out.println(sb);
+        StringBuilder sb = new StringBuilder("Parker");
+        System.out.println(sb);
 
-        // // char at index 0
-        // System.out.println(sb.charAt(0));
+        // char at index 0
+        System.out.println(sb.charAt(0));
 
-        // sb.insert(0, 'B');
-        // System.out.println(sb);
+        sb.insert(0, 'B');
+        System.out.println(sb);
 
         // set char at index 0
-        // sb.setCharAt(0, 'B');
-        // System.out.println(sb);
+        sb.setCharAt(0, 'B');
+        System.out.println(sb);
 
-        // sb.delete(2,3)
+        sb.delete(2,3);
+        System.out.println(sb);
 
-        StringBuilder sb = new StringBuilder("HelloWorld");
+        // StringBuilder sb = new StringBuilder("HelloWorld");
     
         for(int i=0; i<sb.length()/2; i++) {
             int front = i;
@@ -31,5 +32,6 @@ public class stringbuilder {
             sb.setCharAt(front, backChar);
             sb.setCharAt(back, frontChar);
         }
+        System.out.println(sb);
     }
 }

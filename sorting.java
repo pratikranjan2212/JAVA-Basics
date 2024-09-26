@@ -29,60 +29,93 @@ public class sorting {
             array[i] = merged[i - si];
         }
     }
+
+    public static int partition(int arr[], int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        i++;
+        int temp = arr[i];
+        arr[i] = pivot;
+        arr[high] = temp;
+        return i;
+    }
+
+    public static void QuickSort (int arr[], int low, int high) {
+        if (low < high) {
+            int pivot = partition(arr, low, high);
+            QuickSort(arr, low, pivot - 1);
+            QuickSort(arr, pivot + 1, high);
+        }
+    }
     public static void main(String[] args) {
         int array[] = {6, 3, 9, 5, 2, 8};
         int n = array.length;
         // Bubble sort
-        // for (int i = 0; i < n - 1; i++) {
-        //     for (int j = 0; j < n - i - 1; j++) {
-        //         if (array[j] > array[j + 1]) {
-        //             int temp = array[j];
-        //             array[j] = array[j + 1];
-        //             array[j + 1] = temp;
-        //         }
-        //     }
-        // }
-        // System.out.println("Bubble sort: ");
-        // for (int i = 0; i < n; i++) {
-        //     System.out.print(array[i] + " ");
-        // }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("Bubble sort: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(array[i] + " ");
+        }
 
         // Selection sort
-        // for (int i = 0; i < n - 1; i++) {
-        //     int smallest = i;
-        //     for (int j = i + 1; j < n; j++) {
-        //         if (array[j] < array[smallest]) {
-        //             smallest = j;
-        //         }
-        //     }
-        //     int temp = array[smallest];
-        //     array[smallest] = array[i];
-        //     array[i] = temp;
-        // }
-        // System.out.println("Selection sort: ");
-        // for (int i = 0; i < n; i++) {
-        //     System.out.print(array[i] + " ");
-        // }
+        for (int i = 0; i < n - 1; i++) {
+            int smallest = i;
+            for (int j = i + 1; j < n; j++) {
+                if (array[j] < array[smallest]) {
+                    smallest = j;
+                }
+            }
+            int temp = array[smallest];
+            array[smallest] = array[i];
+            array[i] = temp;
+        }
+        System.out.println("Selection sort: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(array[i] + " ");
+        }
 
         // Insertion sort
-        // for (int i = 1; i < n; i++) {
-        //     int key = array[i];
-        //     int j = i - 1;
-        //     while (j >= 0 && array[j] > key) {
-        //         array[j + 1] = array[j];
-        //         j--;
-        //     }
-        //     array[j + 1] = key;
-        // }
-        // System.out.println("Insertion sort: ");
-        // for (int i = 0; i < n; i++) {
-        //     System.out.print(array[i] + " ");
-        // }
+        for (int i = 1; i < n; i++) {
+            int key = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
+        System.out.println("Insertion sort: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(array[i] + " ");
+        }
 
         // Merge sort
         
         divide(array, 0, n - 1);
         System.out.print("Merge sort: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(array[i] + " ");
+        }
+
+        // Quick sort
+        QuickSort(array, n, n-1);
         for (int i = 0; i < n; i++) {
             System.out.print(array[i] + " ");
         }
